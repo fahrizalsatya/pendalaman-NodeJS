@@ -9,7 +9,7 @@ const app = express()
 app.use(morgan('dev'))
 app.use('/assets', express.static(path.join(__dirname, '/assets')))
 app.set('views', path.join(__dirname, '/layout'))
-app.set('view.engine', 'html')
+app.set('view engine', 'html')
 app.engine('html', hbs.__express)
 
 //app route
@@ -19,6 +19,10 @@ app.get('/login', (req, res, next) => {
 
 app.get('/search-product', (req, res, next) => {
     res.render('search-product')
+})
+
+app.get('/search-product-handler', (req, res, next) => {
+    res.send(req.query)
 })
 
 app.use((req, res, next) => {
