@@ -1,19 +1,25 @@
 {
-  "name": "pendalaman-nodejs-fahrizalsatya",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fahrizalsatya/pendalaman-NodeJS.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/fahrizalsatya/pendalaman-NodeJS/issues"
-  },
-  "homepage": "https://github.com/fahrizalsatya/pendalaman-NodeJS#readme"
+    "name": "pendalaman-nodejs-fahrizalsatya",
+    "type": "module",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/fahrizalsatya/pendalaman-NodeJS.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/fahrizalsatya/pendalaman-NodeJS/issues"
+    },
+    "homepage": "https://github.com/fahrizalsatya/pendalaman-NodeJS#readme",
+    "dependencies": {
+        "express": "^4.17.1",
+        "hbs": "^4.1.1"
+    }
 }
