@@ -1,10 +1,10 @@
-import mysql from 'mysql2'
+import mysql from 'mysql'
 
-export fucntion connectionDB() {
+export function connectDB() {
     return mysql.createConnection({
         host: 'localhost',
         user: 'root',
-        database: 'product_catalog'
+        database: 'product-catalog',
     })
 }
 
@@ -17,7 +17,7 @@ export fucntion connectionDB() {
  */
 
 export function insertProduct(dbConnection, name, price, photo) {
-    dbConnection.query('INSERT INTO product SET ?', { name, price, photo }, { err } => {
+    dbConnection.query('INSERT INTO product SET ?', { name, price, photo }, (err) => {
         if (err) {
             console.log(err)
             throw err

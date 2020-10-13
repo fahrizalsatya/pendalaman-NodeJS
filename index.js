@@ -4,7 +4,7 @@ import path from 'path'
 import morgan from 'morgan'
 import bodyParser from 'body-parser'
 import joi from 'joi'
-import { conncetDB } from './database'
+import { connectDB } from './database.js'
 
 const __dirname = path.resolve()
 const app = express()
@@ -54,6 +54,10 @@ app.get('/search-product-handler', (req, res, next) => {
     next()
 }, (req, res, next) => {
     res.send(req.query)
+})
+
+app.get('/product', (req, res, next) => {
+    res.render('product')
 })
 
 app.use((req, res, next) => {
