@@ -3,12 +3,13 @@ import hbs from 'hbs'
 import path from 'path'
 import morgan from 'morgan'
 import bodyParser from 'body-parser'
+import joi from 'joi'
 
 const __dirname = path.resolve()
 const app = express()
 
 app.use(morgan('dev'))
-app.use(bodyParser.urlencoded())
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/assets', express.static(path.join(__dirname, '/assets')))
 app.set('views', path.join(__dirname, '/layout'))
 app.set('view engine', 'html')
@@ -20,6 +21,18 @@ app.get('/login', (req, res, next) => {
 })
 
 app.post('/login', (req, res, next) => {
+    //form validation
+    const schema = joi.object({
+        email: joi.string().email().required(),
+        password: joi.string().required()
+    })
+    const result = schema.validate(req.body)
+    if (result.error) {
+        return next(result.error)
+    }
+    next()
+}, (req, res, next) => {
+    //action
     res.send(req.body)
 })
 
@@ -28,6 +41,16 @@ app.get('/search-product', (req, res, next) => {
 })
 
 app.get('/search-product-handler', (req, res, next) => {
+    //form validation
+    const schema = joi.object({
+        product: joi.string().required()
+    })
+    const result = schema.validate(req.body)
+    if (result.error) {
+        return next(result.error)
+    }
+    next()
+}, (req, res, next) => {
     res.send(req.query)
 })
 
