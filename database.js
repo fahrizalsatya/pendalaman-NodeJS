@@ -49,14 +49,16 @@ export function insertProduct(db, name, price, photo) {
  */
 
 export function getProduct(db) {
-    db.all('SELECT * FROM product', (err, result) => {
-        if (err) {
-            console.log(err)
-        }
-        if (result) {
-            return result
-        } else {
-            return []
-        }
+    return new Promise((resolve, reject) => {
+        db.all('SELECT * FROM product', (err, result) => {
+            if (err) {
+                reject(err)
+            }
+            if (result) {
+                resolve(result)
+            } else {
+                resolve([])
+            }
+        })
     })
 }
