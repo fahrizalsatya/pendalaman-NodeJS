@@ -112,6 +112,7 @@ app.use((err, req, res, next) => {
     res.render('default-error', { errorMessage: err.message })
 })
 
-app.listen(8000, () => {
-    console.log('app listen on port 8000')
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => {
+    console.log(`app listen on port ${PORT}`)
 })
