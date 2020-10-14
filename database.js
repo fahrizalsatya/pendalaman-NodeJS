@@ -63,3 +63,22 @@ export function getProduct(db) {
         })
     })
 }
+
+/**
+ * 
+ * @param {sqlite.Database} db
+ * @param {number} id
+ * 
+ */
+
+export function deleteProduct(db, id) {
+    return new Promise((resolve, reject) => {
+        db.run('DELETE FROM product WHERE id =?', id, (err) => {
+            if (err) {
+                reject(err)
+            }
+
+            resolve()
+        })
+    })
+}
