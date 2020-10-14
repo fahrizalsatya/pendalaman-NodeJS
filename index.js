@@ -69,6 +69,7 @@ app.post('/product', (req, res, next) => {
         price: joi.number().required()
     })
     const result = schema.validate(req.body)
+    console.log(result)
     if (result.error) {
         return next(result.error)
     }

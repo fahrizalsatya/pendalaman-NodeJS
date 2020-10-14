@@ -35,10 +35,11 @@ export function initTable(db) {
  */
 
 export function insertProduct(db, name, price, photo) {
-    db.run('INSERT INTO product (photo, name, price) VALUE ($photo,$name, $price)', { $photo: photo, $name: name, $price: price }, (err) => {
+    db.run('INSERT INTO product (photo,name,price) VALUES ($photo,$name,$price)', { $photo: photo, $name: name, $price: price }, (err) => {
         if (err) {
             throw err
         }
+
         console.log('product saved')
     })
 }
